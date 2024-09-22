@@ -19,11 +19,11 @@ const ProductCard = ({
       overflow="hidden"
       boxShadow="md"
       width="100%"
-      maxWidth="250px"   // Set a maximum width for the card
-      minWidth="200px"   // Set a minimum width for the card
-      aspectRatio={4 / 5} // Maintain a 4:5 width-to-height aspect ratio
+      maxWidth="250px"
+      minWidth="200px"
+      aspectRatio={4 / 5}
       mx="auto"
-      minHeight="450px"   // Set a minimum height for the card
+      minHeight="450px"
     >
       {/* Product Image */}
       <Box width="100%" height="60%">
@@ -36,7 +36,6 @@ const ProductCard = ({
         />
       </Box>
 
-      {/* Product Details */}
       <Box p={3} height="40%">
         <Badge borderRadius="full" px="2" colorScheme="teal">UMKM</Badge>
 
@@ -48,8 +47,8 @@ const ProductCard = ({
           mt="2" 
           fontSize="md" 
           fontWeight="semibold" 
-          noOfLines={1} // Limit to 1 line
-          isTruncated // Enable ellipsis for overflow
+          noOfLines={1}
+          isTruncated
           lineHeight="tight"
         >
           {productName}

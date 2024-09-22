@@ -96,7 +96,6 @@ const Sidebar = ({ onFilterChange }) => {
         </Collapse>
       </Box>
 
-      {/* Rentang Harga Section */}
       <Box mb={5}>
         <Flex alignItems="center" justifyContent="space-between" cursor="pointer" onClick={() => setIsHargaOpen(!isHargaOpen)}>
           <Text fontSize="lg" fontWeight="bold">Rentang Harga</Text>

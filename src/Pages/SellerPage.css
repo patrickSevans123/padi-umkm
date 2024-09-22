@@ -1,0 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+  
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fa;
+    color: #333;
+}
+  
+.app {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+  
+/* Green Gradient Section */
+.header-gradient {
+    background: linear-gradient(to right, #3690aa, #5eb59d); /* Green gradient */
+    padding: 20px;
+    color: white;
+    width: 100vw; /* Make the gradient stretch across the entire viewport width */
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    padding-left: calc((100vw - 90%) / 2); /* Ensure content alignment with the rest of the app */
+    padding-right: calc((100vw - 90%) / 2);
+}
+
+/* "Penilaian Penjual" at the top with distinct styling */
+.header-title {
+    text-align: left;
+    margin-bottom: 20px;
+}
+  
+.header-title h1 {
+    font-size: 40px;
+    font-weight: bold;
+}
+  
+.header-title p {
+    font-size: 14px;
+}
+  
+/* Flexbox layout for the header row */
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.shop-info {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.store-icon {
+    font-size: 60px; /* Increase size of the store icon */
+    margin-right: 10px; /* Space between the icon and shop name */
+}
+
+.shop-name {
+    font-size: 24px; /* Increase size of shop name */
+    font-weight: bold; /* Make shop name bold */
+}
+
+.shop-established {
+    font-size: 14px;
+}
+
+/* Adjust score and rating styles */
+.score h3, .rating-value h3 {
+    font-size: 18px; /* Increase size of score and rating headings */
+    font-weight: bold; /* Make headings bold */
+}
+
+.score-value, .rating-good {
+    font-size: 36px; /* Increase size of score and rating values */
+    font-weight: bold; /* Make values bold */
+}
+  
+.rating-good i {
+    margin-right: 8px;
+    color: white;
+}
+  
+/* Main Content and Four Boxes */
+.main-content {
+    margin-top: 20px;
+}
+  
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+  
+.box {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+  
+.box h3 {
+    font-size: 20px; /* Increase size of box headings */
+    font-weight: bold; /* Make box headings bold */
+}
+
+/* Gray color for specific paragraphs */
+.box p {
+    color: gray; /* Set text color to gray */
+}
+
+.section p {
+    font-size: 14px;
+}
+  
+.progress {
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+  
+.progress-bar {
+    height: 100%;
+    background-color: #008080;
+    border-radius: 5px;
+}
+  
+.score-indicator {
+    margin-top: 10px; /* Space between text and score */
+    text-align: right; /* Align text to the right */
+}
+
+.score-value-green {
+    color: #3690aa; /* Green color for score values */
+    font-weight: bold; /* Make it bold */
+    display: block; /* Ensure it displays as a block for proper alignment */
+}
+
+/* Order Status Styles */
+.order-status {
+    display: flex;
+    justify-content: space-between;
+}
+
+.status-item {
+    text-align: center; /* Center-align text in each status item */
+    flex: 1; /* Allow items to take equal space */
+    display: flex; /* Enable flexbox for centering */
+    flex-direction: column; /* Stack icon and text vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.status-icon {
+    font-size: 50px; /* Adjust icon size */
+    color: #3690aa; /* Optional: change color to match the theme */
+    margin-bottom: 5px; /* Space between icon and text */
+}
+
+.status-item p {
+    font-weight: bold; /* Make the status text bold */
+}
+
+.status-item span {
+    display: block; /* Ensure each piece of text appears on a new line */
+    color: gray; /* Optional: adjust text color */
+}
+
+.transaction-status {
+    color: black; /* Set text color to black */
+  }
+  

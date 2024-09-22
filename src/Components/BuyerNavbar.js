@@ -2,32 +2,30 @@ import React from 'react';
 import { Box, Flex, Input, InputGroup, InputRightElement, IconButton, Image } from '@chakra-ui/react';
 import { BellIcon, ChatIcon, SearchIcon } from '@chakra-ui/icons';
 import { FaShoppingCart, FaUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Change this line
+import { useNavigate } from 'react-router-dom';
 
-const Navbar = ({ onSearch }) => {
-  const navigate = useNavigate(); // Use useNavigate instead
+const BuyerNavbar = ({ onSearch }) => {
+  const navigate = useNavigate();
 
   const handleLogoClick = () => {
-    navigate('/'); // Navigate to main page
+    navigate('/');
   };
 
   return (
     <Flex justifyContent="space-between" alignItems="center" p={4} boxShadow="sm" bg="white">
-      {/* Logo Button */}
       <IconButton 
         aria-label="Padi UMKM Logo"
         icon={<Image src="/static/padiumkm.png" alt="Padi UMKM Logo" h="40px" />}
-        variant="ghost" // Adjusted variant to fit style
-        onClick={handleLogoClick} // Handle click
+        variant="ghost"
+        onClick={handleLogoClick}
       />
 
-      {/* Search Bar */}
       <InputGroup w="60%">
         <Input
           placeholder="Cari produk, jasa, atau vendor"
           variant="outline"
           size="md"
-          onChange={(e) => onSearch(e.target.value)} // Call onSearch prop
+          onChange={(e) => onSearch(e.target.value)}
         />
         <InputRightElement>
           <IconButton
@@ -39,7 +37,6 @@ const Navbar = ({ onSearch }) => {
         </InputRightElement>
       </InputGroup>
 
-      {/* Icons */}
       <Flex gap={4}>
         <IconButton aria-label="Notifications" icon={<BellIcon />} variant="ghost" />
         <IconButton aria-label="Cart" icon={<FaShoppingCart />} variant="ghost" />
@@ -50,4 +47,4 @@ const Navbar = ({ onSearch }) => {
   );
 };
 
-export default Navbar;
+export default BuyerNavbar;

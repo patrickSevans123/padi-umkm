@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaUser, FaStore } from 'react-icons/fa'; // Importing icons from react-icons
+import { FaUser, FaStore } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 const Box = ({ label, Icon, onClick, backgroundColor }) => (
@@ -8,14 +8,14 @@ const Box = ({ label, Icon, onClick, backgroundColor }) => (
     style={{
       backgroundColor: backgroundColor,
       color: 'white',
-      padding: '40px',
+      padding: '50px',
       margin: '20px',
       textAlign: 'center',
       cursor: 'pointer',
       borderRadius: '10px',
       transition: 'background-color 0.3s',
-      width: '200px',
-      height: '200px',
+      width: '250px',
+      height: '250px',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -25,11 +25,11 @@ const Box = ({ label, Icon, onClick, backgroundColor }) => (
     onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
   >
     <Icon style={{ fontSize: '70px', marginBottom: '10px' }} />
-    <h2>{label}</h2>
+    <h2 style={{ fontWeight: 'bold' }}>{label}</h2>
   </div>
 );
 
-const HomePage = () => {
+const BuyerSellerBoxes = () => {
   const navigate = useNavigate();
 
   const handleBuyerClick = () => {
@@ -41,18 +41,18 @@ const HomePage = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h1 style={{ color: 'black', marginBottom: '20px' }}>Please Login As Buyer or Seller</h1>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', height: '100vh', justifyContent: 'center' }}>
+      <h1 style={{ color: 'black', marginBottom: '20px', fontSize: '36px', fontWeight: 'bold' }}>Please Login As Buyer or Seller</h1>
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <Box
           label="Buyer"
-          Icon={FaUser} // Using FaUser icon for Buyer
+          Icon={FaUser}
           onClick={handleBuyerClick}
           backgroundColor="#009ea9"
         />
         <Box
           label="Seller"
-          Icon={FaStore} // Using FaStore icon for Seller
+          Icon={FaStore}
           onClick={handleSellerClick}
           backgroundColor="#182958"
         />
@@ -61,4 +61,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default BuyerSellerBoxes;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, SimpleGrid, Select, Text, Flex } from '@chakra-ui/react';
 import Sidebar from '../Components/Sidebar';
 import ProductCard from '../Components/ProductCard';
-import Navbar from '../Components/Navbar';
+import BuyerNavbar from '../Components/BuyerNavbar';
 
 const ProductListPage = () => {
   const [products, setProducts] = useState([]);
@@ -25,7 +25,7 @@ const ProductListPage = () => {
         if (data.success) {
           setProducts(data.data);
           setFilteredProducts(data.data);
-          fetchSellers(data.data.map(product => product.seller_id)); // Fetch sellers based on product seller IDs
+          fetchSellers(data.data.map(product => product.seller_id));
         }
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -41,7 +41,7 @@ const ProductListPage = () => {
         const sellersMap = {};
         sellerData.forEach(seller => {
           if (seller.success) {
-            sellersMap[seller.data.id] = seller.data.name; // Map seller IDs to names
+            sellersMap[seller.data.id] = seller.data.name;
           }
         });
         setSellers(sellersMap);
@@ -61,7 +61,6 @@ const ProductListPage = () => {
     const applyFilters = () => {
       let filtered = products;
 
-      // Filter by Kategori
       if (filters.kategori.length > 0) {
         filtered = filtered.filter((product) => {
           const categories = Array.isArray(product.category) ? product.category : [product.category];
@@ -69,12 +68,10 @@ const ProductListPage = () => {
         });
       }
 
-      // Filter by Lokasi
       if (filters.lokasi.length > 0) {
         filtered = filtered.filter((product) => filters.lokasi.includes(product.location));
       }
 
-      // Filter by Rentang Harga
       if (filters.hargaTerendah !== '') {
         filtered = filtered.filter((product) => product.price >= Number(filters.hargaTerendah));
       }
@@ -82,7 +79,6 @@ const ProductListPage = () => {
         filtered = filtered.filter((product) => product.price <= Number(filters.hargaTertinggi));
       }
 
-      // Filter by Search Query
       if (searchQuery) {
         filtered = filtered.filter((product) => product.name.toLowerCase().includes(searchQuery.toLowerCase()));
       }
@@ -117,7 +113,7 @@ const ProductListPage = () => {
 
   return (
     <Box>
-      <Navbar onSearch={setSearchQuery} />
+      <BuyerNavbar onSearch={setSearchQuery} />
 
       <Flex>
         <Box w="20%" p={5}>
@@ -147,7 +143,7 @@ const ProductListPage = () => {
                 productName={product.name}
                 productPrice={product.price}
                 productImage={product.images[0]}
-                sellerName={sellers[product.seller_id] || 'Loading...'} // Use fetched seller names
+                sellerName={sellers[product.seller_id] || 'Loading...'}
                 location={product.location || 'Unknown Location'}
                 rating={product.averageRating}
                 sales={product.ratingCount}
