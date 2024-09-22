@@ -1,18 +1,41 @@
-// sidebar.js
 import React, { useState } from 'react';
 import { Box, CheckboxGroup, Stack, Checkbox, Text, Heading, Collapse, IconButton, Flex, Input } from '@chakra-ui/react';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 
+const provinces = [
+  "Jakarta", "Jawa Tengah", "Jawa Timur", "Jawa Barat", "Sumatera Barat",
+  "Bali", "Yogyakarta", "Sulawesi Selatan", "Kalimantan Barat", "Kalimantan Tengah",
+  "Kalimantan Timur", "Nusa Tenggara Timur", "Nusa Tenggara Barat", "Maluku", "Maluku Utara",
+  "Papua", "Papua Barat", "Riau", "Sumatera Utara", "Sumatera Selatan",
+];
+
 const Sidebar = ({ onFilterChange }) => {
   const [isKategoriOpen, setIsKategoriOpen] = useState(false);
   const [isLokasiOpen, setIsLokasiOpen] = useState(false);
+  const [isLokasiExpanded, setIsLokasiExpanded] = useState(false);
   const [isHargaOpen, setIsHargaOpen] = useState(false);
   const [hargaTerendah, setHargaTerendah] = useState('');
   const [hargaTertinggi, setHargaTertinggi] = useState('');
+  const [selectedKategori, setSelectedKategori] = useState([]);
+  const [selectedLokasi, setSelectedLokasi] = useState([]);
 
   const handleHargaChange = () => {
     if (onFilterChange) {
-      onFilterChange({ hargaTerendah, hargaTertinggi });
+      onFilterChange({ hargaTerendah, hargaTertinggi, kategori: selectedKategori, lokasi: selectedLokasi });
+    }
+  };
+
+  const handleKategoriChange = (value) => {
+    setSelectedKategori(value);
+    if (onFilterChange) {
+      onFilterChange({ kategori: value, hargaTerendah, hargaTertinggi, lokasi: selectedLokasi });
+    }
+  };
+
+  const handleLokasiChange = (value) => {
+    setSelectedLokasi(value);
+    if (onFilterChange) {
+      onFilterChange({ lokasi: value, hargaTerendah, hargaTertinggi, kategori: selectedKategori });
     }
   };
 
@@ -32,12 +55,12 @@ const Sidebar = ({ onFilterChange }) => {
           />
         </Flex>
         <Collapse in={isKategoriOpen} animateOpacity>
-          <CheckboxGroup colorScheme="teal" mt={2}>
+          <CheckboxGroup colorScheme="teal" mt={2} onChange={handleKategoriChange}>
             <Stack spacing={1}>
-              <Checkbox value="FashionPria">Fashion Pria</Checkbox>
-              <Checkbox value="FashionWanita">Fashion Wanita</Checkbox>
-              <Checkbox value="Komputer&Laptop">Komputer & Laptop</Checkbox>
-              <Checkbox value="Souvenir&Merchandise">Souvenir & Merchandise</Checkbox>
+              <Checkbox value="Fashion Pria">Fashion Pria</Checkbox>
+              <Checkbox value="Fashion Wanita">Fashion Wanita</Checkbox>
+              <Checkbox value="Komputer dan Laptop">Komputer & Laptop</Checkbox>
+              <Checkbox value="Souvenir dan Merchandise">Souvenir & Merchandise</Checkbox>
             </Stack>
           </CheckboxGroup>
         </Collapse>
@@ -55,14 +78,20 @@ const Sidebar = ({ onFilterChange }) => {
           />
         </Flex>
         <Collapse in={isLokasiOpen} animateOpacity>
-          <CheckboxGroup colorScheme="teal" mt={2}>
+          <CheckboxGroup colorScheme="teal" mt={2} onChange={handleLokasiChange}>
             <Stack spacing={1}>
-              <Checkbox value="jakarta">DKI Jakarta</Checkbox>
-              <Checkbox value="jawa-tengah">Jawa Tengah</Checkbox>
-              <Checkbox value="jawa-timur">Jawa Timur</Checkbox>
-              <Checkbox value="jawa-barat">Jawa Barat</Checkbox>
-              <Checkbox value="sumatera-barat">Sumatera Barat</Checkbox>
+              <Checkbox value="Jakarta">Jakarta</Checkbox>
+              <Checkbox value="Jawa Tengah">Jawa Tengah</Checkbox>
+              <Checkbox value="Jawa Timur">Jawa Timur</Checkbox>
+              <Checkbox value="Jawa Barat">Jawa Barat</Checkbox>
+              <Checkbox value="Sumatera Barat">Sumatera Barat</Checkbox>
+              {isLokasiExpanded && provinces.slice(5).map((province) => (
+                <Checkbox key={province} value={province}>{province}</Checkbox>
+              ))}
             </Stack>
+            <Text cursor="pointer" color="teal.500" onClick={() => setIsLokasiExpanded(!isLokasiExpanded)}>
+              {isLokasiExpanded ? "Tutup" : "Lihat Semua"}
+            </Text>
           </CheckboxGroup>
         </Collapse>
       </Box>

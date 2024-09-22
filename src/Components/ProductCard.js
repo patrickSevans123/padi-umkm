@@ -44,7 +44,14 @@ const ProductCard = ({
           <Text fontWeight="bold" fontSize="sm">{sellerName}</Text>
         </HStack>
 
-        <Text mt="2" fontSize="md" fontWeight="semibold" noOfLines={2} lineHeight="tight">
+        <Text 
+          mt="2" 
+          fontSize="md" 
+          fontWeight="semibold" 
+          noOfLines={1} // Limit to 1 line
+          isTruncated // Enable ellipsis for overflow
+          lineHeight="tight"
+        >
           {productName}
         </Text>
 
