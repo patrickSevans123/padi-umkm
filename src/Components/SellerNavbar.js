@@ -20,23 +20,6 @@ const SellerNavbar = ({ onSearch }) => {
         onClick={handleLogoClick}
       />
 
-      <InputGroup w="60%">
-        <Input
-          placeholder="Cari produk, jasa, atau vendor"
-          variant="outline"
-          size="md"
-          onChange={(e) => onSearch(e.target.value)}
-        />
-        <InputRightElement>
-          <IconButton
-            aria-label="Search"
-            icon={<SearchIcon />}
-            size="sm"
-            variant="ghost"
-          />
-        </InputRightElement>
-      </InputGroup>
-
       <Flex gap={4}>
         <IconButton aria-label="Notifications" icon={<BellIcon />} variant="ghost" />
         <IconButton aria-label="Chat" icon={<ChatIcon />} variant="ghost" />
